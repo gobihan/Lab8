@@ -5,7 +5,7 @@
  * 
  * @author William
  */
-public class Animator extends Thread 
+public class Animator implements Runnable
 {
     /**
      * The ball

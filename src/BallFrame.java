@@ -8,7 +8,7 @@ import java.awt.event.WindowEvent;
 
 /**
  * The frame holds the button and the canvas and is the main program.
- * 
+ *
  * @author William
  */
 public class BallFrame extends Frame {
@@ -18,17 +18,17 @@ public class BallFrame extends Frame {
      */
     private static final int DIAMETER = 50 ;
 
-    
+
     /**
      * The animator - the thread creating the animation
      */
     private Animator animator ;  // the animator thread object
-        
+    private Thread thread; // the thread
     /**
      * The ball
      */
     private Ball ball ;          // the ball
-    
+
     /**
      * The canvas
      */
@@ -40,21 +40,21 @@ public class BallFrame extends Frame {
     private Button button ;
 
     /**
-     * Constructor the components (the canvas and the button) and lay them out. Add listeners for the 
+     * Constructor the components (the canvas and the button) and lay them out. Add listeners for the
      * button and for the frame closing event.
      */
     public BallFrame() {
         super() ;
-        
         // set the title
         this.setTitle("Bouncing Balls 1");
 
         // set the layout manager
         this.setLayout(new BorderLayout());
 
-        // create a ball and canvas
+        // create a ball and canvas, created animator object here toooo
         ball = new Ball(DIAMETER) ;
         canvas = new BallCanvas(ball) ;
+        animator= new Animator(ball, canvas);
         this.add(canvas, BorderLayout.NORTH) ;
 
         // create a button
@@ -66,22 +66,22 @@ public class BallFrame extends Frame {
 	// more presses do nothing
         button.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                if (animator == null) {
-                  animator = new Animator(ball, canvas) ;
-                  animator.start() ;
-          //      } else {
-          //          System.out.println("hello");
+                if (thread == null) {
+                  thread = new Thread(animator) ;
+                  thread.start() ;
+//                } else {
+//                    System.out.println("hello");
                 }
             }}) ;
 
         // show the frame
         this.pack();
-        this.setVisible(true); 
+        this.setVisible(true);
 
         // add listener to close
         this.addWindowListener (new WindowAdapter() {
             public void windowClosing(WindowEvent e){
-                animator.interrupt() ;
+                thread.interrupt() ;
                 System.exit(0);
             }
         });
