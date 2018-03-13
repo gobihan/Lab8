@@ -40,7 +40,7 @@ public class BallCanvas extends Canvas
        int y = ball.getY() ;
        int diam = ball.getDiam() ;
 
-       g.setColor(Color.RED) ;
+       g.setColor(ball.getColour()) ;
        g.drawOval(x, y, diam, diam) ;
        g.fillOval(x, y, diam, diam) ;
     }

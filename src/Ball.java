@@ -1,3 +1,4 @@
+import java.awt.*;
 
 /**
  * The ball has a current position and velocity.
@@ -10,7 +11,7 @@ public class Ball
     private int x ;
     private int y ;
     private int diam ;
-
+    private Color colour;
     // dynamics
     private int vy ;  // speed downwards
     private final int VX = 3 ; // horizontal speed 
@@ -29,7 +30,7 @@ public class Ball
      * 
      * @param theDiam the ball diameter
      */
-    public Ball(int theDiam)
+    public Ball(int theDiam, Color colour)
     {
         // diameter
         diam = theDiam ;
@@ -37,7 +38,7 @@ public class Ball
         // set initial co-ordinates
         x = diam / 2 ;
         y = diam / 2 ;
-
+        colour=colour;
         // initial vertical speed
         vy = 0 ;
     }
@@ -72,8 +73,9 @@ public class Ball
     public int getDiam() 
     {
        return diam ;
-    } 
+    }
 
+    public Color getColour(){return colour;}
     /**
      * Move the ball. The horizontal speed is constant.
      * The vertical speed increased by a constant amount, simulating

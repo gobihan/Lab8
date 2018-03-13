@@ -1,6 +1,4 @@
-import java.awt.BorderLayout;
-import java.awt.Button;
-import java.awt.Frame;
+import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.WindowAdapter;
@@ -51,10 +49,13 @@ public class BallFrame extends Frame {
 
         // set the layout manager
         this.setLayout(new BorderLayout());
-
+        BallSet ballset= new BallSet();
+        ballset.addBall();
         // create a ball and canvas, created animator object here toooo
-        ball = new Ball(50) ;
-        ball2= new Ball(20);
+        ball = new Ball(50, Color.blue) ;
+        ball2= new Ball(20, Color.blue);
+        ballset.addBall();
+        ballset.addBall();
         canvas = new BallCanvas(ball) ;
         canvas2= new BallCanvas(ball2);
         animator= new Animator(ball, canvas);
