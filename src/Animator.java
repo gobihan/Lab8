@@ -38,9 +38,12 @@ public class Animator implements Runnable
             ball.move() ;
             canvas.repaint() ;
             try {
-                Thread.sleep(100) ;
-            } catch (InterruptedException e) {}
+                Thread.sleep(10) ;
+            } catch (InterruptedException e) {
+                System.out.println("Program was interupted");
+            }
         }
+            System.out.println("stopped");
     }
 
 }

@@ -68,9 +68,15 @@ public class BallFrame extends Frame {
             public void actionPerformed(ActionEvent e) {
                 if (thread == null) {
                   thread = new Thread(animator) ;
-                  thread.start() ;
-//                } else {
-//                    System.out.println("hello");
+                  thread.start();
+                } else {
+                    ball=new Ball(DIAMETER);
+                    canvas= new BallCanvas(ball);
+                    animator= new Animator(ball,canvas);
+                    canvas.repaint();
+                    thread= new Thread(animator);
+                    thread.start();
+                    System.out.println("hello");
                 }
             }}) ;
 
@@ -94,6 +100,6 @@ public class BallFrame extends Frame {
 	 */
 	public static void main(String[] args) {
 		// create the ball frame
-		new BallFrame() ;
+		 new BallFrame() ;
 	}
 }
