@@ -54,7 +54,7 @@ public class BallFrame extends Frame {
 
         // create a ball and canvas, created animator object here toooo
         ball = new Ball(50) ;
-        ball2= new Ball(50);
+        ball2= new Ball(20);
         canvas = new BallCanvas(ball) ;
         canvas2= new BallCanvas(ball2);
         animator= new Animator(ball, canvas);
@@ -78,8 +78,12 @@ public class BallFrame extends Frame {
                 } else {
                     ball.reset();
                     canvas.repaint();
+                    ball2.reset();
+                    canvas2.repaint();
                     thread= new Thread(animator);
+                    thread2=new Thread(animator2);
                     thread.start();
+                    thread2.start();
                     System.out.println("hello");
                 }
             }}) ;
