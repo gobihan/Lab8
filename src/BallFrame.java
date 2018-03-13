@@ -70,12 +70,12 @@ public class BallFrame extends Frame {
 	// the first press creates the animator and starts it
 	// more presses do nothing
         button.addActionListener(new ActionListener() {
+
             public void actionPerformed(ActionEvent e) {
+                for(int i=0; i<ballset.getSize(); i++){
                 if (thread == null) {
                   thread = new Thread(animator) ;
-                  thread2 = new Thread(animator2);
                   thread.start();
-                  thread2.start();
                 } else {
                     ball.reset();
                     canvas.repaint();
@@ -87,7 +87,7 @@ public class BallFrame extends Frame {
                     thread2.start();
                     System.out.println("hello");
                 }
-            }}) ;
+            }}}) ;
 
         // show the frame
         this.pack();
