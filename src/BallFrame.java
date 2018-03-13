@@ -22,8 +22,8 @@ public class BallFrame extends Frame {
     /**
      * The animator - the thread creating the animation
      */
-    private Animator animator ;  // the animator thread object
-    private Thread thread; // the thread
+    private Animator animator, animator2 ;  // the animator thread object
+    private Thread thread, thread2; // the thread
     /**
      * The ball
      */
@@ -53,11 +53,14 @@ public class BallFrame extends Frame {
         this.setLayout(new BorderLayout());
 
         // create a ball and canvas, created animator object here toooo
-        ball = new Ball(DIAMETER) ;
+        ball = new Ball(50) ;
+        ball2= new Ball(50);
         canvas = new BallCanvas(ball) ;
+        canvas2= new BallCanvas(ball2);
         animator= new Animator(ball, canvas);
+        animator2=new Animator(ball2,canvas2);
         this.add(canvas, BorderLayout.NORTH) ;
-
+        this.add(canvas2,BorderLayout.NORTH);
         // create a button
         button = new Button("START") ;
         this.add(button, BorderLayout.SOUTH) ;
@@ -69,7 +72,9 @@ public class BallFrame extends Frame {
             public void actionPerformed(ActionEvent e) {
                 if (thread == null) {
                   thread = new Thread(animator) ;
+                  thread2 = new Thread(animator2);
                   thread.start();
+                  thread2.start();
                 } else {
                     ball.reset();
                     canvas.repaint();
