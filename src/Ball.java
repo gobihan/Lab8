@@ -103,5 +103,15 @@ public class Ball
     public boolean atRightEdge() 
     {
        return x > BallCanvas.WIDTH - diam ;
-    } 
+    }
+
+    public void reset(){
+
+        // set initial co-ordinates
+        x = diam / 2 ;
+        y = diam / 2 ;
+
+        // initial vertical speed
+        vy = 0 ;
+    }
 }

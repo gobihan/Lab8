@@ -28,11 +28,12 @@ public class BallFrame extends Frame {
      * The ball
      */
     private Ball ball ;          // the ball
-
+    private Ball ball2;
     /**
      * The canvas
      */
     private BallCanvas canvas ;  // the canvas for drawing the ball
+    private BallCanvas canvas2;
 
     /**
      * The button
@@ -70,9 +71,7 @@ public class BallFrame extends Frame {
                   thread = new Thread(animator) ;
                   thread.start();
                 } else {
-                    ball=new Ball(DIAMETER);
-                    canvas= new BallCanvas(ball);
-                    animator= new Animator(ball,canvas);
+                    ball.reset();
                     canvas.repaint();
                     thread= new Thread(animator);
                     thread.start();
